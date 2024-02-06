@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeightTracker.Views.MainPage"
+             Title="MainPage">
+
+        <Grid RowDefinitions="*, Auto, Auto, Auto, *, Auto" Padding="{StaticResource PageMargin}">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                    <GradientStop Color="{Binding TopBackgroundColor}" Offset="0.1" />
+                    <GradientStop Color="{Binding BottomBackgroundColor}" Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="Center" Padding="5">
+                <Label x:Name="CurrentWeight" Text="{Binding CurrentWeightText}"  FontSize="72" VerticalOptions="End" TextColor="White" />
+                <Label x:Name="UnitSystem" Text="{Binding WeightUnit}" FontSize="52" VerticalOptions="End" TextColor="White" />
+
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <Label x:Name="CurrentWeightDate" Text="{Binding CurrentDateText}" Grid.Row="2" HorizontalOptions="Center" TextColor="White" FontSize="24" Padding="0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Frame Grid.Row="3" Margin="{StaticResource PageMargin}" VerticalOptions="Center" Style="{StaticResource DataFrame}" Opacity="0.60">
+                <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label x:Name="WeekProgress" Text="-" IsVisible="{Binding HasHistory}" FontSize="18" TextColor="Black"  />
+                        <Image x:Name="WeekProgressImage" Source="{Binding WeekProgressIcon}" WidthRequest="20" HeightRequest="20" VerticalOptions="End" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label x:Name="MonthProgress" Text="-" IsVisible="{Binding HasHistory}" FontSize="18" TextColor="Black" />
+                        <Image x:Name="MonthProgressImage" Source="{Binding MonthProgressIcon}" WidthRequest="20" HeightRequest="20" VerticalOptions="End" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label x:Name="YearProgress" Text="-" IsVisible="{Binding HasHistory}" FontSize="18" TextColor="Black" />
+                        <Image x:Name="YearProgressImage" Source="{Binding YearProgressIcon}" WidthRequest="20" HeightRequest="20" VerticalOptions="End" />
+                    </StackLayout>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Week" FontAttributes="Bold" FontSize="16" HorizontalOptions="Center" TextColor="Black" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="Month" FontAttributes="Bold" FontSize="16" HorizontalOptions="Center" TextColor="Black" />
+                    <Label Grid.Row="1" Grid.Column="2" Text="Year" FontAttributes="Bold" FontSize="16" HorizontalOptions="Center" TextColor="Black" />
+                </Grid>
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            
+            <Grid Grid.Row="5" ColumnDefinitions="*,*,*" Padding="0, 20">
+                <ImageButton x:Name="GraphBtn" Grid.Column="0" Source="{StaticResource IconGraph}" Style="{StaticResource ActionButton}" Clicked="GraphBtn_Clicked" VerticalOptions="End" />
+                <ImageButton x:Name="NewBtn" Grid.Column="1" Source="{StaticResource IconAdd}" Style="{StaticResource ActionButton}" HeightRequest="50" WidthRequest="50"  Clicked="NewBtn_Clicked" />
+                <ImageButton x:Name="SettingsBtn" Grid.Column="2" Source="{StaticResource IconSetting}" Style="{StaticResource ActionButton}" Clicked="SettingsBtn_Clicked" VerticalOptions="End" />
+            </Grid>
+        </Grid>
+
+
+</ContentPage>

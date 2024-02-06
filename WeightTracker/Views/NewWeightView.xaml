@@ -1,0 +1,27 @@
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="WeightTracker.Views.NewWeightView">
+
+    <VerticalStackLayout>
+        <!-- Page Header -->
+        <ImageButton x:Name="BackBtn" Source="{StaticResource IconClose}" Margin="10" HorizontalOptions="End" Style="{StaticResource ActionButton}" Clicked="BackBtn_Clicked" />
+
+        <!-- Page Content -->
+        <Frame Style="{StaticResource DataFrame}" WidthRequest="350">
+            <ScrollView>
+                <VerticalStackLayout Spacing="20">
+                    <DatePicker x:Name="RecordDate" Date="{Binding WeightDate}" />
+                    <Entry x:Name="Weight" Placeholder="Weight" Text="{Binding Weight}" Keyboard="Numeric"/>
+                    <Entry x:Name="BodyFat" Placeholder="Body Fat %" Text="{Binding BodyFat}" Keyboard="Numeric"/>
+                    <Entry x:Name="MuscleMass" Placeholder="Muscle Mass %" Text="{Binding MuscleMass}" Keyboard="Numeric"/>
+                    <Entry x:Name="WaterWeight" Placeholder="Water Weight %" Text="{Binding WaterWeight}" Keyboard="Numeric"/>
+                    <Entry x:Name="BoneMass" Placeholder="Bone Mass %" Text="{Binding BoneMass}" Keyboard="Numeric"/>
+
+                    <Button x:Name="NewDataBtn" Text="Add Weight" Clicked="NewDataBtn_Clicked" />
+                </VerticalStackLayout>
+            </ScrollView>
+        </Frame>
+    </VerticalStackLayout>
+
+</toolkit:Popup>

@@ -1,0 +1,42 @@
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="WeightTracker.Views.DetailedView">
+
+    <VerticalStackLayout>
+        <!-- Page Header -->
+        <ImageButton x:Name="BackBtn" Source="{StaticResource IconClose}" Margin="10" HorizontalOptions="End" Style="{StaticResource ActionButton}" Clicked="BackBtn_Clicked" />
+
+        <!-- Page Content -->
+        <Frame Style="{StaticResource DataFrame}" WidthRequest="350">
+            <Grid ColumnDefinitions="2*,*,*" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
+                <Label x:Name="DateRecorded" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="-" FontSize="22" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black" />
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Weight" FontSize="16" TextColor="Black" />
+                <Label x:Name="Weight" Grid.Row="1" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+
+                <Label Grid.Row="2" Grid.Column="0" Text="BMI" FontSize="16" TextColor="Black" />
+                <Label x:Name="BMI" Grid.Row="2" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Body Fat" FontSize="16" TextColor="Black" />
+                <Label x:Name="BodyFat" Grid.Row="3" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                <Label x:Name="BodyFatPer" Grid.Row="3" Grid.Column="2" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+
+                <Label Grid.Row="4" Grid.Column="0" Text="Muscle Mass" FontSize="16" TextColor="Black" />
+                <Label x:Name="MuscleMass" Grid.Row="4" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                <Label x:Name="MuscleMassPer" Grid.Row="4" Grid.Column="2" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+
+                <Label Grid.Row="5" Grid.Column="0" Text="Water Weight" FontSize="16"/>
+                <Label x:Name="WaterWeight" Grid.Row="5" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold" />
+                <Label x:Name="WaterWeightPer" Grid.Row="5" Grid.Column="2" Text="-" FontSize="16" FontAttributes="Bold" />
+
+                <Label Grid.Row="6" Grid.Column="0" Text="Bone Mass" FontSize="16" TextColor="Black" />
+                <Label x:Name="BoneMass" Grid.Row="6" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                <Label x:Name="BoneMassPer" Grid.Row="6" Grid.Column="2" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+
+                <Button x:Name="DeleteWeightBtn" Text="Delete" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"/>
+            </Grid>
+        </Frame>
+    </VerticalStackLayout>
+    
+</toolkit:Popup>
