@@ -80,6 +80,7 @@ public partial class MainModelView : ObservableObject
 
     public MainModelView() 
     {
+        Populate();
     }
 
     public async void Populate()

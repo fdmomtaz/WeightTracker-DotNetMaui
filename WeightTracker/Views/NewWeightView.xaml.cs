@@ -8,7 +8,7 @@ public partial class NewWeightView :  CommunityToolkit.Maui.Views.Popup
 	{
 		InitializeComponent();
 
-		BindingContext = new WeightModelView();
+		BindingContext = new WeightModelView() ;
 	}
 
 	private async void BackBtn_Clicked(object sender, EventArgs e)
@@ -18,37 +18,38 @@ public partial class NewWeightView :  CommunityToolkit.Maui.Views.Popup
 	
 	private async void NewDataBtn_Clicked(object sender, EventArgs e)
 	{
+		WeightModelView? weight = null;
+
 		try
 		{
-			/*
-			if (string.IsNullOrWhiteSpace(Weight.Text))
+			weight = (WeightModelView) this.BindingContext;
+
+			if (weight.Weight <= 0)
 			{
-				//await this.App.DisplayAlert("Can't Do That!", "The weight can't be empty", "OK");
+				weight.FormError = "The weight should be a positive non-zero number";
 				return;
 			}
 
-			if (RecordDate.Date == DateTime.MaxValue || RecordDate.Date == DateTime.MinValue)
+			if (weight.WeightDate == DateTime.MaxValue || weight.WeightDate == DateTime.MinValue)
 			{
-				//await this.App.DisplayAlert("Can't Do That!", "The date is required", "OK");
+				weight.FormError =  "The date is required";
 				return;
 			}
 
-			if (RecordDate.Date > DateTime.Now)
+			if (weight.WeightDate > DateTime.Now)
 			{
-				// await this.App.DisplayAlert("Can't Do That!", "Can't add a weight for a future date", "OK");
+				weight.FormError =  "Can't add a weight for a future date";
 				return;
 			}
 
 			List<Weight> weights = await App.Database.GetWeights();
-			if (weights.Any(x => x.Record.Date == RecordDate.Date))
+			if (weights.Any(x => x.Record.Date == weight.WeightDate.Date))
 			{
-				// await  this.App.DisplayAlert("Can't Do That!", "Can't add two weights for a date", "OK");
+				weight.FormError =  "Can't add two weights for a date";
 				return;
 			}
-*/
 
 			// create new object
-			WeightModelView weight = (WeightModelView) this.BindingContext;
 			Weight newWeight = new Weight
 			{
 				Value = weight.Weight,
@@ -67,12 +68,16 @@ public partial class NewWeightView :  CommunityToolkit.Maui.Views.Popup
 			}
 			else
 			{
-				//await this.App.DisplayAlert("Well This is Embarrassing!!", "Unfortunately we ran into an issues while saving the data", "OK");
+				weight.FormError =  "Well This is Embarrassing!! Unfortunately we ran into an issues while saving the data";
 			}
 		}
 		catch(Exception Ex)
 		{
-			//await this.App.DisplayAlert("Well This is Embarrassing!!", "Unfortunately we ran into an issues while saving the data", "OK");
+
+
+			if (weight != null)
+				weight.FormError =  Ex.Message; // "Well This is Embarrassing!! Unfortunately we ran into an issues while saving the data";
+
 		}
 	}
 }
