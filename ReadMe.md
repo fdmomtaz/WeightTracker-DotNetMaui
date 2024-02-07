@@ -2,7 +2,7 @@
 
 **Work in progress**
 
-Welcome to the .NET MAUI Weight Tracker App, an open-source project showcasing the power and elegance of .NET MAUI for building good looking cross-platform applications. This app is more than just a tool for tracking weight—it's a testament to how beautiful, user-friendly interfaces can be created with .NET MAUI technologies. My goal is to demonstrate that you can build a fully functional and visually appealing app using .NET MAUI, backed by a SQLite local database for robust data management.
+Welcome to the .NET MAUI Weight Tracker App, an open-source project showcasing the power and elegance of .NET MAUI for building good looking cross-platform applications. My goal is to demonstrate that you can build a fully functional and visually appealing app using .NET MAUI, backed by a SQLite local database for robust data management.
 
 **Images coming soon**
 
@@ -11,14 +11,6 @@ Welcome to the .NET MAUI Weight Tracker App, an open-source project showcasing t
 - **Current Weight and Progress Display:** A beautifully designed homepage that not only shows your current weight but also visualizes your progress over time.
 - **Weight History:** Dive into your weight history with a dedicated page that outlines your journey, helping you stay motivated and informed.
 - **Local Data Storage:** Utilizes a SQLite database to store and retrieve your weight data securely and efficiently, ensuring your data remains private and accessible across sessions.
-
-## Project Goals
-
-This project is crafted to:
-
-- Demonstrate the Capabilities of .NET MAUI: Showcasing .NET MAUI's ability to create beautiful, functional apps that work across platforms.
-- Promote Best Practices: By open-sourcing this app, we aim to provide a real-world example of best practices in app development using .NET MAUI and SQLite.
-- Foster Community Contribution: We encourage the community to contribute, whether it's through feature enhancements, bug fixes, or UI improvements, to help make this app a benchmark for .NET MAUI projects.
 
 ## Technologies Used
 

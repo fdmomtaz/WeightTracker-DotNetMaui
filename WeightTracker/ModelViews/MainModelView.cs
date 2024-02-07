@@ -147,8 +147,8 @@ public partial class MainModelView : ObservableObject
         List<Weight> monthWeights = weights.Where(x => x.Record >= monthDate).OrderByDescending(x => x.Record).ToList();
         List<Weight> weekWeights = weights.Where(x => x.Record >= weekDate).OrderByDescending(x => x.Record).ToList();
 
-        WeekProgress = weekWeights[weekWeights.Count - 1].Value - weekWeights[0].Value;
-        MonthProgress = monthWeights[monthWeights.Count - 1].Value - monthWeights[0].Value;
-        YearProgress = yearWeights[yearWeights.Count - 1].Value - yearWeights[0].Value;
+        WeekProgress = weekWeights[0].Value - weekWeights[weekWeights.Count - 1].Value;
+        MonthProgress = monthWeights[0].Value - monthWeights[monthWeights.Count - 1].Value;
+        YearProgress = yearWeights[0].Value - yearWeights[yearWeights.Count - 1].Value;
     }
 }

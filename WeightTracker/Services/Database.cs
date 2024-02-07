@@ -13,6 +13,11 @@ public class Database
         _database.CreateTableAsync<Weight>().Wait();
     }
 
+    public Task<Weight> GetWeight(int WeightId) 
+    {
+        return _database.Table<Weight>().Where(x => x.WeightId == WeightId).FirstOrDefaultAsync();
+    }
+
     public Task<List<Weight>> GetWeights()
     {
         return _database.Table<Weight>().ToListAsync();

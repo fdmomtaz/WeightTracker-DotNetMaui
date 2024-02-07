@@ -30,15 +30,15 @@
             <Frame Grid.Row="3" Margin="{StaticResource PageMargin}" VerticalOptions="Center" Style="{StaticResource DataFrame}" Opacity="0.60">
                 <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*">
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Center">
-                        <Label x:Name="WeekProgress" Text="-" IsVisible="{Binding HasHistory}" FontSize="18" TextColor="Black"  />
+                        <Label x:Name="WeekProgress" Text="{Binding WeekProgress}" IsVisible="{Binding HasHistory}" FontSize="18" TextColor="Black"  />
                         <Image x:Name="WeekProgressImage" Source="{Binding WeekProgressIcon}" WidthRequest="20" HeightRequest="20" VerticalOptions="End" />
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="Center">
-                        <Label x:Name="MonthProgress" Text="-" IsVisible="{Binding HasHistory}" FontSize="18" TextColor="Black" />
+                        <Label x:Name="MonthProgress" Text="{Binding MonthProgress}" IsVisible="{Binding HasHistory}" FontSize="18" TextColor="Black" />
                         <Image x:Name="MonthProgressImage" Source="{Binding MonthProgressIcon}" WidthRequest="20" HeightRequest="20" VerticalOptions="End" />
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalOptions="Center">
-                        <Label x:Name="YearProgress" Text="-" IsVisible="{Binding HasHistory}" FontSize="18" TextColor="Black" />
+                        <Label x:Name="YearProgress" Text="{Binding YearProgress}" IsVisible="{Binding HasHistory}" FontSize="18" TextColor="Black" />
                         <Image x:Name="YearProgressImage" Source="{Binding YearProgressIcon}" WidthRequest="20" HeightRequest="20" VerticalOptions="End" />
                     </StackLayout>
 
