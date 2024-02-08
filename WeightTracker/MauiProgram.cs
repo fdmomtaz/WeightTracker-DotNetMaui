@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using UraniumUI;
+using Microcharts.Maui;
 
 namespace WeightTracker;
 
@@ -14,6 +15,7 @@ public static class MauiProgram
 		    .UseMauiCommunityToolkit()
 			.UseUraniumUI()
 			.UseUraniumUIMaterial()
+			.UseMicrocharts()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

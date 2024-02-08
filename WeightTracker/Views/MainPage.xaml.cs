@@ -1,5 +1,6 @@
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
+using MauiApp1;
 
 namespace WeightTracker.Views;
 
@@ -11,6 +12,13 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 
 		BindingContext = new MainModelView();
+	}
+	protected async override void OnAppearing()
+	{
+		base.OnAppearing();
+	
+		if (!Preferences.ContainsKey("is_app_init"))
+			await Navigation.PushAsync(new WelcomePage());
 	}
 
 	async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs args)

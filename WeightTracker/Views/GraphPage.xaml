@@ -3,18 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeightTracker.Views.GraphPage"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:micro="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
              Title="GraphPage">
-    <VerticalStackLayout>
-        <material:PickerField Title="Weight Interval">
-            <material:PickerField.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Week</x:String>
-                    <x:String>Month</x:String>
-                    <x:String>Year</x:String>
-                    <x:String>All Data</x:String>
-                </x:Array>
-            </material:PickerField.ItemsSource>
-        </material:PickerField>
+    
+    <ScrollView>
+        <VerticalStackLayout Margin="{StaticResource PageMargin}" >
 
-    </VerticalStackLayout>
+            <Label Text="FILTERS" Style="{StaticResource Header}"/>
+            <material:PickerField Title="Weight Interval" SelectedItem="{Binding SelectedInterval}">
+                <material:PickerField.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Week</x:String>
+                        <x:String>Month</x:String>
+                        <x:String>Year</x:String>
+                    </x:Array>
+                </material:PickerField.ItemsSource>
+            </material:PickerField>
+
+            <Label Text="GRAPH" Style="{StaticResource Header}"/>
+            <Frame Style="{StaticResource DataFrame}">
+                <micro:ChartView x:Name="chartView" Chart="{Binding ChartData}" HeightRequest="200" />
+            </Frame>
+
+            <Label Text="HISTORY" Style="{StaticResource Header}"/>
+            <CollectionView x:Name="DataHistory" SelectionMode="Single" ItemsSource="{Binding WeightsHistory}" SelectionChanged="DataHistory_SelectionChanged">
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout x:Name="NoRecords" Padding="20">
+                            <Label Text="Couldn't Find any Records" TextColor="Black" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Text="Try Adding Some! ;)" TextColor="Black" FontSize="28" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*, Auto, 50" Padding="10, 15">
+                            <Label x:Name="RecordDate" Grid.Column="0" FontSize="16" Text="{Binding Record, StringFormat='{0:MMMM dd, yyyy}'}" TextColor="Black" />
+                            <Label x:Name="Weight" Grid.Column="1" FontAttributes="Bold" FontSize="16" Text="{Binding Value}" TextColor="Black" />
+                            <Image x:Name="MoreDetail" Grid.Column="2" Source="{StaticResource IconDetail}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>

@@ -199,6 +199,12 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type Label}" x:Key="Header">
+        <Setter Property="TextTransform" Value="Uppercase"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="Padding" Value="0, 10, 0, 5"/>
+    </Style>
+
     <Style TargetType="Span">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
     </Style>

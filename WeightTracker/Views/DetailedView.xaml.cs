@@ -5,7 +5,7 @@ namespace WeightTracker.Views;
 
 public partial class DetailedView : CommunityToolkit.Maui.Views.Popup
 {
-	public DetailedView(int? weightId = null)
+	public DetailedView(int? weightId = null, Weight? weight = null)
 	{
 		InitializeComponent();
 

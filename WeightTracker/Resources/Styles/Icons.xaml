@@ -3,46 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
 
-        <FontImageSource x:Key="IconClose" 
-            Color="{StaticResource Primary}"
-            FontFamily="FontAwesomeSolid"
-            Glyph="&#xf00d;"
-            Size="{StaticResource SizeTabIcon}" />
+    <FontImageSource x:Key="IconClose" 
+        Color="{StaticResource Primary}"
+        FontFamily="FontAwesomeSolid"
+        Glyph="&#xf00d;"
+        Size="{StaticResource SizeTabIcon}" />
 
     <FontImageSource x:Key="IconSetting" 
-            Color="White"
-            FontFamily="FontAwesomeSolid"
-            Glyph="&#xf013;"
-            Size="{StaticResource SizeTabIcon}" />
+        Color="White"
+        FontFamily="FontAwesomeSolid"
+        Glyph="&#xf013;"
+        Size="{StaticResource SizeTabIcon}" />
 
     <FontImageSource x:Key="IconAdd" 
-            Color="White"
-            FontFamily="FontAwesomeSolid"
-            Glyph="&#xf0fe;"
-            Size="{StaticResource SizeTabIcon}" />
+        Color="White"
+        FontFamily="FontAwesomeSolid"
+        Glyph="&#xf0fe;"
+        Size="{StaticResource SizeTabIcon}" />
 
     <FontImageSource x:Key="IconGraph" 
-            Color="White"
-            FontFamily="FontAwesomeSolid"
-            Glyph="&#xf1fe;"
-            Size="{StaticResource SizeTabIcon}" />
+        Color="White"
+        FontFamily="FontAwesomeSolid"
+        Glyph="&#xf1fe;"
+        Size="{StaticResource SizeTabIcon}" />
 
             
-    <FontImageSource x:Key="IconWeightUp" 
-            Color="White"
-            FontFamily="FontAwesomeSolid"
-            Glyph="&#xf0d8;"
-            Size="{StaticResource SizeTabIcon}" />
-            
-    <FontImageSource x:Key="IconWeightDown" 
-            Color="White"
-            FontFamily="FontAwesomeSolid"
-            Glyph="&#xf0d7;"
-            Size="{StaticResource SizeTabIcon}" />
-            
-    <FontImageSource x:Key="IconNoWeight" 
-            Color="White"
-            FontFamily="FontAwesomeSolid"
-            Glyph="&#xf111;"
-            Size="{StaticResource SizeTabIcon}" />
+     <FontImageSource x:Key="IconDetail" 
+        Color="Black"
+        FontFamily="FontAwesomeSolid"
+        Glyph="&#xf105;"
+        Size="{StaticResource SizeTabIcon}" />
+
 </ResourceDictionary>
