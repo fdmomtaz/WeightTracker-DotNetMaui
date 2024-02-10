@@ -4,6 +4,7 @@ using SkiaSharp;
 using WeightTracker.Models;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Maui.Alerts;
 
 namespace WeightTracker.Views;
 
@@ -25,16 +26,24 @@ public partial class GraphPage : ContentPage
 
 	private async void DataHistory_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
-		Weight selectedWeight = (Weight) ((CollectionView)sender).SelectedItem;
-		if (selectedWeight == null)
-			return;
+		try
+		{
+			Weight selectedWeight = (Weight) ((CollectionView)sender).SelectedItem;
+			if (selectedWeight == null)
+				return;
 
-		var shouldRefresh = await this.ShowPopupAsync(new DetailedView(weight:selectedWeight));
+			var shouldRefresh = await this.ShowPopupAsync(new DetailedView(weight:selectedWeight));
 
-		if(shouldRefresh != null && (bool)shouldRefresh) {		
-			((GraphModelView)BindingContext).Populate();
+			if(shouldRefresh != null && (bool)shouldRefresh) {		
+				((GraphModelView)BindingContext).Populate();
+			}
+
+			DataHistory.SelectedItem = null;
 		}
-
-		DataHistory.SelectedItem = null;
+		catch(Exception)
+		{
+			var toast = Toast.Make("Well This is Embarrassing!! Unfortunately we ran into an issue showing the details of the record", ToastDuration.Short, 14);
+			await toast.Show();
+		}
 	}
 }

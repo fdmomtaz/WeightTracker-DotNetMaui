@@ -4,7 +4,7 @@
              x:Class="WeightTracker.Views.GraphPage"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              xmlns:micro="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
-             Title="GraphPage">
+             Title="Weight History">
     
     <ScrollView>
         <VerticalStackLayout Margin="{StaticResource PageMargin}" >

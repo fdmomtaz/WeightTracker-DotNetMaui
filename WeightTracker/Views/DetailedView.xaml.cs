@@ -1,5 +1,8 @@
 using CommunityToolkit.Maui.Views;
 using WeightTracker.Models;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+
 
 namespace WeightTracker.Views;
 
@@ -29,8 +32,16 @@ public partial class DetailedView : CommunityToolkit.Maui.Views.Popup
 	
 	private async void DeleteWeightBtn_Clicked(object sender, EventArgs e)
 	{
-		await App.Database.DeleteWeightAsync(weight);
+		try 
+		{
+			await App.Database.DeleteWeightAsync(weight);
 
-		await CloseAsync(true);
+			await CloseAsync(true);
+		}
+		catch(Exception) 
+		{
+			var toast = Toast.Make("Well This is Embarrassing!! Unfortunately we ran into an issues while deleting the weight recordings", ToastDuration.Short, 14);
+			await toast.Show();
+		}
 	}
 }

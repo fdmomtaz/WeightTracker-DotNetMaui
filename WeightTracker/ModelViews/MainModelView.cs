@@ -9,9 +9,14 @@ public partial class MainModelView : ObservableObject
     public Weight? LastRecord = null;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(CurrentWeightText))]
+    [NotifyPropertyChangedFor(nameof(CurrentDateText))]
     private bool hasValue = false;
     
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(WeekProgressIcon))]
+    [NotifyPropertyChangedFor(nameof(MonthProgressIcon))]
+    [NotifyPropertyChangedFor(nameof(YearProgressIcon))]
     private bool hasHistory = false;
     
     [ObservableProperty]

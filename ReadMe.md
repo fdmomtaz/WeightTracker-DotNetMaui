@@ -18,6 +18,9 @@ Welcome to the .NET MAUI Weight Tracker App, an open-source project showcasing t
 - SQLite: A C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
 - NET MAUI Community Toolkit: A collection of reusable elements for mobile and desktop development with .NET MAUI, including converters, behaviors, and effects to speed up development and enhance app capabilities.
 - CommunityToolkit.Mvvm: An MVVM (Model-View-ViewModel) toolkit that simplifies the implementation of the MVVM pattern in .NET applications, providing advanced features like observable properties, commands, and messaging that make developing responsive, testable apps easier.
+- AiForms.Maui.SettingsView: A library for easily adding settings views to your .NET MAUI app, allowing for the creation of rich, customizable settings screens without extensive UI coding.
+- UraniumUI.Material: A .NET MAUI library that brings Material Design components and styles to your app, helping create a modern, visually appealing interface with Material Design principles.
+- Microcharts.Maui: A versatile charting library for .NET MAUI that enables the integration of beautiful and interactive charts into your app, perfect for displaying data and progress in a visually engaging way.
 - MVVM Architecture: Leveraging the Model-View-ViewModel (MVVM) pattern to promote a clean separation of concerns and easier maintenance.
 
 ## Getting Started

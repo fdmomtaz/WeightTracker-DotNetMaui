@@ -16,6 +16,8 @@ public partial class MainPage : ContentPage
 	protected async override void OnAppearing()
 	{
 		base.OnAppearing();
+		
+		((MainModelView)BindingContext).Populate();
 	
 		// sent to welcome page
 		if (!Preferences.ContainsKey("is_app_init"))
