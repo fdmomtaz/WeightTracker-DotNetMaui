@@ -10,7 +10,7 @@
         <!-- Page Content -->
         <Frame Style="{StaticResource DataFrame}" WidthRequest="350">
             <Grid ColumnDefinitions="2*,*,*" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
-                <Label Text="{Binding WeightDate}" x:Name="DateRecorded" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  FontSize="22" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="{Binding WeightDate, StringFormat='{0:MMMM dd, yyyy}'}" x:Name="DateRecorded" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  FontSize="22" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black" />
 
                 <Label Grid.Row="1" Grid.Column="0" Text="Weight" FontSize="16" TextColor="Black" />
                 <Label Text="{Binding Weight}" x:Name="Weight" Grid.Row="1" Grid.Column="1" FontSize="16" FontAttributes="Bold" TextColor="Black" />

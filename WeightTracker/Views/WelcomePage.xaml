@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              x:Class="MauiApp1.WelcomePage"
-             Title="WelcomePage">
+             Shell.NavBarIsVisible="false">
     <Grid
         x:Name="CardBody">
         <Grid.RowDefinitions>

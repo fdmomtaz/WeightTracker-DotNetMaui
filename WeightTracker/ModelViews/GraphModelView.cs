@@ -76,10 +76,10 @@ public partial class GraphModelView : ObservableObject
         List<ChartEntry> chartEntries = new List<ChartEntry>();
         for(int i = WeightsHistory.Count -1 ; i >= 0; i--)
         {
-            SKColor pointColor = SKColor.Parse("#77d065");
+            SKColor pointColor = SKColor.Parse("#FF0000");
 
             if (i > 0 && WeightsHistory[i].Value > WeightsHistory[i - 1].Value)
-                pointColor = SKColor.Parse("#FF0000");
+                pointColor = SKColor.Parse("#77d065");
 
             chartEntries.Add(new ChartEntry((float) (WeightsHistory[i].Value - ScaleValue))
             {
