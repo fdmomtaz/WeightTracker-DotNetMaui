@@ -10,31 +10,31 @@
         <!-- Page Content -->
         <Frame Style="{StaticResource DataFrame}" WidthRequest="350">
             <Grid ColumnDefinitions="2*,*,*" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="20">
-                <Label x:Name="DateRecorded" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="-" FontSize="22" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="{Binding WeightDate}" x:Name="DateRecorded" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  FontSize="22" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black" />
 
                 <Label Grid.Row="1" Grid.Column="0" Text="Weight" FontSize="16" TextColor="Black" />
-                <Label x:Name="Weight" Grid.Row="1" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="{Binding Weight}" x:Name="Weight" Grid.Row="1" Grid.Column="1" FontSize="16" FontAttributes="Bold" TextColor="Black" />
 
                 <Label Grid.Row="2" Grid.Column="0" Text="BMI" FontSize="16" TextColor="Black" />
-                <Label x:Name="BMI" Grid.Row="2" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="{Binding BMI}" x:Name="BMI" Grid.Row="2" Grid.Column="1" FontSize="16" FontAttributes="Bold" TextColor="Black" />
 
                 <Label Grid.Row="3" Grid.Column="0" Text="Body Fat" FontSize="16" TextColor="Black" />
-                <Label x:Name="BodyFat" Grid.Row="3" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
-                <Label x:Name="BodyFatPer" Grid.Row="3" Grid.Column="2" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="{Binding BodyFat}" x:Name="BodyFat" Grid.Row="3" Grid.Column="1"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="{Binding BodyFatPercent}" x:Name="BodyFatPer" Grid.Row="3" Grid.Column="2"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
 
                 <Label Grid.Row="4" Grid.Column="0" Text="Muscle Mass" FontSize="16" TextColor="Black" />
-                <Label x:Name="MuscleMass" Grid.Row="4" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
-                <Label x:Name="MuscleMassPer" Grid.Row="4" Grid.Column="2" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="{Binding MuscleMass}" x:Name="MuscleMass" Grid.Row="4" Grid.Column="1"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="{Binding MuscleMassPercent}" x:Name="MuscleMassPer" Grid.Row="4" Grid.Column="2"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
 
                 <Label Grid.Row="5" Grid.Column="0" Text="Water Weight" FontSize="16"/>
-                <Label x:Name="WaterWeight" Grid.Row="5" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold" />
-                <Label x:Name="WaterWeightPer" Grid.Row="5" Grid.Column="2" Text="-" FontSize="16" FontAttributes="Bold" />
+                <Label Text="{Binding WaterWeight}" x:Name="WaterWeight" Grid.Row="5" Grid.Column="1"  FontSize="16" FontAttributes="Bold" />
+                <Label Text="{Binding WaterWeightPercent}" x:Name="WaterWeightPer" Grid.Row="5" Grid.Column="2"  FontSize="16" FontAttributes="Bold" />
 
                 <Label Grid.Row="6" Grid.Column="0" Text="Bone Mass" FontSize="16" TextColor="Black" />
-                <Label x:Name="BoneMass" Grid.Row="6" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
-                <Label x:Name="BoneMassPer" Grid.Row="6" Grid.Column="2" Text="-" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="{Binding BoneMass}" x:Name="BoneMass" Grid.Row="6" Grid.Column="1"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="{Binding BoneMassPercent}" x:Name="BoneMassPer" Grid.Row="6" Grid.Column="2"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
 
-                <Button x:Name="DeleteWeightBtn" Text="Delete" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"/>
+                <Button x:Name="DeleteWeightBtn" Text="Delete" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Clicked="DeleteWeightBtn_Clicked"/>
             </Grid>
         </Frame>
     </VerticalStackLayout>

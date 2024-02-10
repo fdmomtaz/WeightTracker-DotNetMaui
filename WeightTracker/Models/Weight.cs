@@ -8,8 +8,8 @@ public class Weight
     public int WeightId { get; set; }
     public DateTime Record { get; set; }
     public double Value { get; set; }
-    public double? BodyFat { get; set; }
-    public double? MuscleMass { get; set; }
-    public double? WaterWeight { get; set; }
-    public double? BoneMass { get; set; }
+    public double? BodyFatPercent { get; set; }
+    public double? MuscleMassPercent { get; set; }
+    public double? WaterWeightPercent { get; set; }
+    public double? BoneMassPercent { get; set; }
 }

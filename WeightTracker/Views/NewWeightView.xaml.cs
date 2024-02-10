@@ -13,7 +13,7 @@ public partial class NewWeightView :  CommunityToolkit.Maui.Views.Popup
 
 	private async void BackBtn_Clicked(object sender, EventArgs e)
 	{
-		await CloseAsync();
+		await CloseAsync(false);
 	}
 	
 	private async void NewDataBtn_Clicked(object sender, EventArgs e)
@@ -54,29 +54,27 @@ public partial class NewWeightView :  CommunityToolkit.Maui.Views.Popup
 			{
 				Value = weight.Weight,
 				Record = weight.WeightDate,
-				BodyFat = weight.BodyFat,
-				BoneMass = weight.BoneMass,
-				MuscleMass = weight.MuscleMass,
-				WaterWeight = weight.WaterWeight
+				BodyFatPercent = weight.BodyFatPercent,
+				BoneMassPercent = weight.BoneMassPercent,
+				MuscleMassPercent = weight.MuscleMassPercent,
+				WaterWeightPercent = weight.WaterWeightPercent
 			};
 
 			// add new data to the database
 			int isSuccess = await App.Database.SaveWeightAsync(newWeight);
 			if (isSuccess == 1)
 			{
-				await CloseAsync();
+				await CloseAsync(true);
 			}
 			else
 			{
 				weight.FormError =  "Well This is Embarrassing!! Unfortunately we ran into an issues while saving the data";
 			}
 		}
-		catch(Exception Ex)
+		catch(Exception)
 		{
-
-
 			if (weight != null)
-				weight.FormError =  Ex.Message; // "Well This is Embarrassing!! Unfortunately we ran into an issues while saving the data";
+				weight.FormError = "Well This is Embarrassing!! Unfortunately we ran into an issues while saving the data";
 
 		}
 	}

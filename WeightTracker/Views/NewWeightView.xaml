@@ -22,10 +22,10 @@
 
                     <material:DatePickerField x:Name="RecordDate" Title="Date" Date="{Binding WeightDate}" />
                     <material:TextField x:Name="Weight" Title="Weight" Text="{Binding Weight}" Keyboard="Numeric"/>
-                    <material:TextField x:Name="BodyFat" Title="Body Fat %" Text="{Binding BodyFat}" Keyboard="Numeric"/>
-                    <material:TextField x:Name="MuscleMass" Title="Muscle Mass %" Text="{Binding MuscleMass}" Keyboard="Numeric"/>
-                    <material:TextField x:Name="WaterWeight" Title="Water Weight %" Text="{Binding WaterWeight}" Keyboard="Numeric"/>
-                    <material:TextField x:Name="BoneMass" Title="Bone Mass %" Text="{Binding BoneMass}" Keyboard="Numeric"/>
+                    <material:TextField x:Name="BodyFat" Title="Body Fat %" Text="{Binding BodyFatPercent}" Keyboard="Numeric"/>
+                    <material:TextField x:Name="MuscleMass" Title="Muscle Mass %" Text="{Binding MuscleMassPercent}" Keyboard="Numeric"/>
+                    <material:TextField x:Name="WaterWeight" Title="Water Weight %" Text="{Binding WaterWeightPercent}" Keyboard="Numeric"/>
+                    <material:TextField x:Name="BoneMass" Title="Bone Mass %" Text="{Binding BoneMassPercent}" Keyboard="Numeric"/>
 
                     <Button x:Name="NewDataBtn" Text="Add Weight" Clicked="NewDataBtn_Clicked" />
                 </VerticalStackLayout>

@@ -30,16 +30,16 @@ public partial class WelcomeModelView : ObservableObject
     private bool isPicker = false;
 
     [ObservableProperty]
-    private List<string> pickerItems;
+    private List<string> pickerItems = new List<string>();
 
     [ObservableProperty]
-    private string selectedItem;
+    private string selectedItem = "";
 
     [ObservableProperty]
     private bool isInput = false;
 
     [ObservableProperty]
-    private double height;
+    private double height = 0;
 
     private int Index = 0;
 

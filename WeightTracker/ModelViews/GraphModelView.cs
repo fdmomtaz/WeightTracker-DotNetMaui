@@ -11,7 +11,7 @@ public partial class GraphModelView : ObservableObject
 {
 
     [ObservableProperty]
-    private List<Weight> weightsHistory;
+    private List<Weight> weightsHistory = new List<Weight>();
 
     [ObservableProperty]
     private string selectedInterval = "Week";
@@ -50,8 +50,22 @@ public partial class GraphModelView : ObservableObject
                                 .OrderByDescending(x => x.Record)
                                 .ToList();
 
-        if (WeightsHistory.Count == 0)
+        // set the default values
+        if (WeightsHistory.Count == 0) {
+            WeightsHistory = new List<Weight>();
+
+            ChartData = new LineChart { 
+                Entries = new List<ChartEntry>() {
+                    new ChartEntry(0) {
+                        Label = "-",
+                        ValueLabel = "0",
+                        Color = SKColor.Parse("#000000")
+                    }
+                } 
+            };
+
             return;
+        }
 
         // get min weight
         double ScaleValue = WeightsHistory.OrderBy(x => x.Value).First().Value - 10;

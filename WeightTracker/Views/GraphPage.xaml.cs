@@ -16,13 +16,24 @@ public partial class GraphPage : ContentPage
 		BindingContext = new GraphModelView();
 	}
 
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+				
+		((GraphModelView)BindingContext).Populate();
+	}
+
 	private async void DataHistory_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
-		Weight selectedWeight = DataHistory.SelectedItem as Weight;
+		Weight selectedWeight = (Weight) ((CollectionView)sender).SelectedItem;
 		if (selectedWeight == null)
 			return;
 
-		await this.ShowPopupAsync(new DetailedView(weight:selectedWeight));
+		var shouldRefresh = await this.ShowPopupAsync(new DetailedView(weight:selectedWeight));
+
+		if(shouldRefresh != null && (bool)shouldRefresh) {		
+			((GraphModelView)BindingContext).Populate();
+		}
 
 		DataHistory.SelectedItem = null;
 	}

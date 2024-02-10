@@ -5,19 +5,32 @@ namespace WeightTracker.Views;
 
 public partial class DetailedView : CommunityToolkit.Maui.Views.Popup
 {
-	public DetailedView(int? weightId = null, Weight? weight = null)
+	Weight weight;
+
+	public DetailedView(Weight weight)
 	{
 		InitializeComponent();
 
-		if (weightId.HasValue) {
-//			Weight weight = await App.Database.GetWeight(weightId.Value);
-			
-			
-		}
+		this.weight = weight;
+		this.BindingContext = new WeightModelView() {
+			WeightDate = weight.Record,
+			Weight = weight.Value,
+			BodyFatPercent = weight.BodyFatPercent,
+			MuscleMassPercent = weight.MuscleMassPercent,
+			WaterWeightPercent = weight.WaterWeightPercent,
+			BoneMassPercent = weight.BoneMassPercent
+		};
 	}
 	
 	private async void BackBtn_Clicked(object sender, EventArgs e)
 	{
-		await CloseAsync();
+		await CloseAsync(false);
+	}
+	
+	private async void DeleteWeightBtn_Clicked(object sender, EventArgs e)
+	{
+		await App.Database.DeleteWeightAsync(weight);
+
+		await CloseAsync(true);
 	}
 }

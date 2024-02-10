@@ -17,19 +17,29 @@ public partial class MainPage : ContentPage
 	{
 		base.OnAppearing();
 	
+		// sent to welcome page
 		if (!Preferences.ContainsKey("is_app_init"))
 			await Navigation.PushAsync(new WelcomePage());
 	}
 
 	async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs args)
 	{
-		if (((MainModelView)BindingContext).HasValue)
-	        await this.ShowPopupAsync(new DetailedView());
+		if (((MainModelView)BindingContext).HasValue && ((MainModelView)BindingContext).LastRecord != null) {
+			var shouldRefresh = await this.ShowPopupAsync(new DetailedView(((MainModelView)BindingContext).LastRecord));
+		
+			if (shouldRefresh != null && (bool)shouldRefresh) {
+				((MainModelView)BindingContext).Populate();
+			}
+		}
 	}
 
 	private async void NewBtn_Clicked(object sender, EventArgs e)
 	{
-        await this.ShowPopupAsync(new NewWeightView());
+        var shouldRefresh = await this.ShowPopupAsync(new NewWeightView());
+
+		if (shouldRefresh != null && (bool)shouldRefresh) {
+			((MainModelView)BindingContext).Populate();
+		}
 	}
 
 	private async void GraphBtn_Clicked(object sender, EventArgs e)

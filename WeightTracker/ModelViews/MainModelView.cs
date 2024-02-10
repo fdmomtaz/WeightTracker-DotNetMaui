@@ -6,6 +6,8 @@ namespace WeightTracker;
 
 public partial class MainModelView : ObservableObject
 {
+    public Weight? LastRecord = null;
+
     [ObservableProperty]
     private bool hasValue = false;
     
@@ -106,7 +108,7 @@ public partial class MainModelView : ObservableObject
         // get all the recorded weights
         HasValue = true;
         weights = weights.OrderByDescending(x => x.Record).ToList();
-        Weight LastRecord = weights[0];
+        LastRecord = weights[0];
 
         // set the current date
         CurrentWeight = LastRecord.Value;
