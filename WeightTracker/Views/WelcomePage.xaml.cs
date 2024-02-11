@@ -11,8 +11,9 @@ public partial class WelcomePage : ContentPage
 		BindingContext = new WelcomeModelView();
 	}
 
-	private void NextBtn_Clicked(object sender, EventArgs e)
+	private async void NextBtn_Clicked(object sender, EventArgs e)
 	{
-		((WelcomeModelView)BindingContext).Increment();
+		if (((WelcomeModelView)BindingContext).Increment())
+			await Navigation.PopAsync();
 	}
 }

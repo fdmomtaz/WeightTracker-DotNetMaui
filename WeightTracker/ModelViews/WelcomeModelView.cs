@@ -1,4 +1,6 @@
 ﻿using System.Resources;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using WeightTracker.Models;
 
@@ -21,49 +23,125 @@ public partial class WelcomeModelView : ObservableObject
     [ObservableProperty]
     private string pickerTitle = PickerTitles[0];
 
-    private static string[] PickerTitles = {"", "Gender", "Unit of Measurement", "Height"};
+    private static string[] PickerTitles = {"", "Gender", "Unit of Measurement", "Height (CM)"};
     
     [ObservableProperty]
     private string description = "We just need a few small btis of information to get going :)";
     
+    [ObservableProperty]
+    private bool isTitle = true;
+
     [ObservableProperty]
     private bool isPicker = false;
 
     [ObservableProperty]
     private List<string> pickerItems = new List<string>();
 
+    public List<string>[] Items = {
+        new List<string>(),
+        new List<string>() {"Male", "Female"}, 
+        new List<string>() {"Imperial", "Metric"}, 
+        new List<string>() 
+    };
+
     [ObservableProperty]
     private string selectedItem = "";
 
     [ObservableProperty]
-    private bool isInput = false;
+    private bool isMetricHeight = false;
+    
+    [ObservableProperty]
+    private bool isImperialHeight = false;
 
     [ObservableProperty]
     private double height = 0;
+    
+    [ObservableProperty]
+    private string heightFt = "";
+    
+    [ObservableProperty]
+    private string heightIn = "";
 
     private int Index = 0;
 
     public WelcomeModelView() {
     }
 
-    public void Increment() {
-        Index++;
+    public bool Increment() {
+        // process the current step
+        if (Index == 1) {
+            if (string.IsNullOrWhiteSpace(SelectedItem)) {
+                var toast = Toast.Make("Please select your gender", ToastDuration.Short, 14);
+                toast.Show();
 
-        if (Index == 4) {
-            Save();
-            return;
+                return false;
+            }
+
+            Enums.Gender gender = Enum.Parse<Enums.Gender>(SelectedItem);
+			Preferences.Set("Gender", (int) gender);
+        }
+        else if(Index == 2) {
+            if (string.IsNullOrWhiteSpace(SelectedItem)) {
+                var toast = Toast.Make("Please select a unit system", ToastDuration.Short, 14);
+                toast.Show();
+
+                return false;
+            }
+
+            Enums.UnitSystem unit = Enum.Parse<Enums.UnitSystem>(SelectedItem);
+			Preferences.Set("UnitSystem", (int) unit);
+        }
+        else if(Index == 3) {
+            Enums.UnitSystem unitSystem = (Enums.UnitSystem) Preferences.Get("UnitSystem", (int)Enums.UnitSystem.Imperial);
+
+            if (unitSystem == Enums.UnitSystem.Imperial) {
+                if (string.IsNullOrWhiteSpace(HeightFt) || string.IsNullOrWhiteSpace(HeightIn)) {
+                    var toast = Toast.Make("Please select your height", ToastDuration.Short, 14);
+                    toast.Show();
+
+                    return false;
+                }
+                
+                Preferences.Set("HeightFtInfo", int.Parse(HeightFt));
+                Preferences.Set("HeightInchInfo", int.Parse(HeightIn));
+            }
+            else {
+                if (Height == 0) {
+                    var toast = Toast.Make("Please enter your height", ToastDuration.Short, 14);
+                    toast.Show();
+
+                    return false;
+                }
+
+                Preferences.Set("HeightCmInfo", Height);
+            }
         }
 
+        // increment index
+        Index++;
+        if (Index == 4) {
+            return Save();
+        }
+
+        // update the UI
         Title = Titles[Index];
         PickerTitle = PickerTitles[Index];
         Image = new FontImageSource() {Glyph= Images[Index], FontFamily = "FontAwesomeSolid", Size = 150, Color = Color.FromArgb(Colors[Index])};
+        PickerItems = Items[Index];
+        SelectedItem = "";
 
+        IsTitle = Index == 0;
         IsPicker = Index == 1 || Index == 2;
-        IsInput = Index == 3;
+        IsImperialHeight = Index == 3 && ((Enums.UnitSystem) Preferences.Get("UnitSystem", (int)Enums.UnitSystem.Imperial) == Enums.UnitSystem.Imperial);
+        IsMetricHeight = Index == 3 && ((Enums.UnitSystem) Preferences.Get("UnitSystem", (int)Enums.UnitSystem.Imperial) == Enums.UnitSystem.Metric);
+
+        return false;
     }
 
-    public void Save() {
+    public bool Save() {
         // mark app as init
-        Preferences.Set("is_app_init", DateTime.Now);
+        Preferences.Set("isAppInit", DateTime.Now);
+
+        return true;
     }
 }
