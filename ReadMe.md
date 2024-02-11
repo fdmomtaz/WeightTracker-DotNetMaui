@@ -1,6 +1,6 @@
 # .NET MAUI Weight Tracker App
 
-![App Icon](Pictures/AppIcon.png "App Icon")
+![App Banner](Pictures/ProjectsWeightTracker.png "App Banner")
 
 Welcome to the .NET MAUI Weight Tracker App, an open-source project showcasing the power and elegance of .NET MAUI for building good looking cross-platform applications. My goal is to demonstrate that you can build a fully functional and visually appealing app using .NET MAUI, backed by a SQLite local database for robust data management.
 
