@@ -20,7 +20,7 @@ public partial class MainPage : ContentPage
 		((MainModelView)BindingContext).Populate();
 	
 		// sent to welcome page
-		if (!Preferences.ContainsKey("is_app_init"))
+		if (!Preferences.ContainsKey("isAppInit"))
 			await Navigation.PushAsync(new WelcomePage());
 	}
 

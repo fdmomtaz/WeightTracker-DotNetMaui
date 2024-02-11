@@ -23,10 +23,7 @@ public partial class WeightModelView : ObservableObject
 
             if (unitSystem == Enums.UnitSystem.Metric && Preferences.ContainsKey("HeightCmInfo") && Preferences.Get("HeightCmInfo", string.Empty) != string.Empty)
             {
-                double heightMetric;
-                double.TryParse(Preferences.Get("HeightCmInfo", string.Empty), out heightMetric);
-                heightMetric = heightMetric / 100;
-
+                double heightMetric = Preferences.Get("HeightCmInfo", 0) / 100;
                 return Math.Round(Weight / (heightMetric * heightMetric), 2);
             }
 

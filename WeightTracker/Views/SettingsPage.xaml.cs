@@ -10,6 +10,25 @@ public partial class SettingsPage : ContentPage
 	{
 		InitializeComponent();
 	}
+	
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+		
+		// populate UI here instead of MVVM
+        Enums.UnitSystem unitSystem = (Enums.UnitSystem) Preferences.Get("UnitSystem", (int)Enums.UnitSystem.Imperial);
+		UnitText.ValueText = unitSystem.ToString();
+
+		if (unitSystem == Enums.UnitSystem.Imperial) {
+			HeightText.ValueText = string.Format("{0}' {1}\"", Preferences.Get("HeightFtInfo", 0), Preferences.Get("HeightInchInfo", 0));
+		}
+		else {
+			HeightText.ValueText = string.Format("{0} CM", Preferences.Get("HeightCmInfo", string.Empty));
+		}
+		
+        Enums.Gender gender = (Enums.Gender) Preferences.Get("Gender", (int)Enums.Gender.UnSelected);
+		GenderText.ValueText = gender.ToString();
+	}
 
 	private async void DeleteBtn_Clicked(object sender, EventArgs e)
 	{
@@ -18,7 +37,15 @@ public partial class SettingsPage : ContentPage
 			// delete all the data
 			await App.Database.DeleteAllWeightAsync();
 
-			var toast = Toast.Make("Your Data was successfully deteled", ToastDuration.Short, 14);
+			// delete all saved data
+			Preferences.Remove("isAppInit");
+			Preferences.Remove("UnitSystem");
+			Preferences.Remove("HeightFtInfo");
+			Preferences.Remove("HeightInchInfo");
+			Preferences.Remove("HeightCmInfo");
+			Preferences.Remove("Gender");
+
+			var toast = Toast.Make("Your Data was successfully deleted", ToastDuration.Short, 14);
 			await toast.Show();
 		}
 		catch(Exception) 

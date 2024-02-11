@@ -7,9 +7,9 @@
     <sv:SettingsView HasUnevenRows="true">
         
         <sv:Section Title="Your Information">
-            <sv:LabelCell Title="Units" ValueText="" />
-            <sv:LabelCell Title="Height" ValueText="" />
-            <sv:LabelCell Title="Gender" ValueText="" />
+            <sv:LabelCell x:Name="UnitText" Title="Units" ValueText="" />
+            <sv:LabelCell x:Name="HeightText" Title="Height" ValueText="" />
+            <sv:LabelCell x:Name="GenderText" Title="Gender" ValueText="" />
         </sv:Section>
         
         <sv:Section Title="Your Data">

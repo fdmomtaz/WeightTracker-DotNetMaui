@@ -11,8 +11,8 @@ public partial class WelcomePage : ContentPage
 		BindingContext = new WelcomeModelView();
 	}
 
-        private void NextBtn_Clicked(object sender, EventArgs e)
-        {
-            ((WelcomeModelView)BindingContext).Increment();
-        }
+	private void NextBtn_Clicked(object sender, EventArgs e)
+	{
+		((WelcomeModelView)BindingContext).Increment();
+	}
 }
