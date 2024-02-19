@@ -56,6 +56,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Platforms/Android/Resources/values/attrs.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="AiForms.Maui.SettingsView" Version="1.0.7" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
