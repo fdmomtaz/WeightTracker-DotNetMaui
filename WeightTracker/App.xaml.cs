@@ -12,9 +12,7 @@ public partial class App : Application
 		{
 			// create new database instance
 			if (database == null)
-			{
-				database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "weights.db3"));
-			}
+				database = new Database();
 
 			return database;
 		}

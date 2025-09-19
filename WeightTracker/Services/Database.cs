@@ -5,36 +5,47 @@ namespace WeightTracker.Services;
 
 public class Database
 {
-    readonly SQLiteAsyncConnection _database;
+    private static string dbPath => Path.Combine(FileSystem.AppDataDirectory, "weights.db3");
+    private SQLiteAsyncConnection? _database;
 
-    public Database(string dbPath)
+    public async Task<SQLiteAsyncConnection> GetDatabaseAsync()
     {
-        _database = new SQLiteAsyncConnection(dbPath);
-        _database.CreateTableAsync<Weight>().Wait();
+        if (_database == null)
+        {
+            _database = new SQLiteAsyncConnection(dbPath);
+            await _database.CreateTableAsync<Weight>();
+        }
+
+        return _database;
+    }
+    
+    public async Task<Weight> GetWeight(int WeightId)
+    {
+        var db = await GetDatabaseAsync();
+        return await db.Table<Weight>().Where(x => x.WeightId == WeightId).FirstOrDefaultAsync();
     }
 
-    public Task<Weight> GetWeight(int WeightId) 
+    public async Task<List<Weight>> GetWeights()
     {
-        return _database.Table<Weight>().Where(x => x.WeightId == WeightId).FirstOrDefaultAsync();
+        var db = await GetDatabaseAsync();
+        return await db.Table<Weight>().ToListAsync();
     }
 
-    public Task<List<Weight>> GetWeights()
+    public async Task<int> SaveWeightAsync(Weight weight)
     {
-        return _database.Table<Weight>().ToListAsync();
+        var db = await GetDatabaseAsync();
+        return await db.InsertAsync(weight);
     }
 
-    public Task<int> SaveWeightAsync(Weight weight)
+    public async Task<int> DeleteAllWeightAsync()
     {
-        return _database.InsertAsync(weight);
+        var db = await GetDatabaseAsync();
+        return await db.DeleteAllAsync<Weight>();
     }
 
-    public Task<int> DeleteAllWeightAsync()
+    public async Task<int> DeleteWeightAsync(Weight weight)
     {
-        return _database.DeleteAllAsync<Weight>();
-    }
-
-    public Task<int> DeleteWeightAsync(Weight weight)
-    {
-        return _database.DeleteAsync(weight);
+        var db = await GetDatabaseAsync();
+        return await db.DeleteAsync(weight);
     }
 }
