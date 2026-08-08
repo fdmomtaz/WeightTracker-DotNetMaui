@@ -26,7 +26,7 @@ public partial class WelcomeModelView : ObservableObject
     private static string[] PickerTitles = {"", "Gender", "Unit of Measurement", "Height (CM)"};
     
     [ObservableProperty]
-    private string description = "We just need a few small btis of information to get going :)";
+    private string description = "We just need a few small bits of information to get going :)";
     
     [ObservableProperty]
     private bool isTitle = true;
@@ -145,3 +145,4 @@ public partial class WelcomeModelView : ObservableObject
         return true;
     }
 }
+
